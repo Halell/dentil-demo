@@ -21,3 +21,63 @@
 .info-panel p:last-child {
   margin-bottom: 0;
 }
+
+/* Timeline Info Styles */
+.timeline-info {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #dee2e6;
+}
+
+.timeline-info p {
+  margin: 0 0 6px 0;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.timeline-current {
+  color: #2c3e50 !important;
+  font-weight: 500;
+}
+
+.timeline-date {
+  color: #6c757d !important;
+}
+
+.timeline-dentist {
+  color: #495057 !important;
+}
+
+.timeline-notes {
+  color: #6c757d !important;
+  font-style: italic;
+  background: rgba(0, 123, 255, 0.05);
+  padding: 6px 8px;
+  border-radius: 4px;
+  margin-top: 8px !important;
+  border-left: 2px solid #007bff;
+}
+
+/* Current Image Info Styles */
+.current-image-info {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #dee2e6;
+}
+
+.current-image-info p {
+  margin: 0 0 6px 0;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.image-current {
+  color: #2c3e50 !important;
+  font-weight: 500;
+}
+
+.image-id {
+  color: #6c757d !important;
+  font-family: 'Courier New', monospace;
+  font-size: 12px !important;
+}

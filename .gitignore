@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Archive folder with unused/utility files
+archive-unused/
+archive-files.ps1

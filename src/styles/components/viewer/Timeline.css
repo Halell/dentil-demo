@@ -1,0 +1,347 @@
+/* Timeline Container */
+.timeline-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.timeline-container:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Timeline Header */
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.timeline-header h3 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.patient-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+}
+
+.patient-info span {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.patient-id {
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem !important;
+  background: #f8f9fa;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+/* Timeline Wrapper */
+.timeline-wrapper {
+  position: relative;
+  padding: 1rem 0;
+}
+
+/* Main Timeline Line */
+.timeline-line {
+  position: absolute;
+  top: 2rem;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(to right, #e9ecef, #dee2e6, #e9ecef);
+  border-radius: 2px;
+  z-index: 1;
+}
+
+/* Progress Line */
+.timeline-progress {
+  position: absolute;
+  top: 2rem;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(to right, #007bff, #0056b3);
+  border-radius: 2px;
+  z-index: 2;
+  transition: width 0.5s ease;
+}
+
+/* Timeline Items Container */
+.timeline-items {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  z-index: 3;
+}
+
+/* Individual Timeline Item */
+.timeline-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0.5rem;
+  border-radius: 8px;
+  min-width: 120px;
+  text-align: center;
+}
+
+.timeline-item:hover {
+  background: rgba(0, 123, 255, 0.05);
+  transform: translateY(-2px);
+}
+
+.timeline-item.current {
+  background: rgba(0, 123, 255, 0.1);
+  transform: translateY(-3px);
+}
+
+.timeline-item.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Timeline Marker */
+.timeline-marker {
+  position: relative;
+  margin-bottom: 0.75rem;
+}
+
+.timeline-dot {
+  width: 16px;
+  height: 16px;
+  background: var(--timeline-color);
+  border: 3px solid white;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  z-index: 4;
+  position: relative;
+}
+
+.timeline-item:hover .timeline-dot {
+  width: 20px;
+  height: 20px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.timeline-item.current .timeline-dot {
+  width: 22px;
+  height: 22px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 0 0 0 0 var(--timeline-color);
+  }
+  70% {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 0 0 0 10px transparent;
+  }
+  100% {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 0 0 0 0 transparent;
+  }
+}
+
+/* Timeline Content */
+.timeline-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+.timeline-date {
+  font-size: 0.8rem;
+  color: #6c757d;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.timeline-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #2c3e50;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.timeline-data-types {
+  font-size: 1rem;
+  margin-top: 0.25rem;
+  opacity: 0.8;
+}
+
+/* Timeline Tooltip */
+.timeline-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 10px;
+  background: #2c3e50;
+  color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  min-width: 280px;
+  max-width: 350px;
+  pointer-events: none;
+}
+
+.tooltip-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.tooltip-date {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.tooltip-description {
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+.tooltip-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tooltip-details > div {
+  font-size: 0.85rem;
+  line-height: 1.3;
+}
+
+.tooltip-details strong {
+  color: #74C0FC;
+}
+
+.tooltip-notes {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem;
+  border-radius: 4px;
+  margin-top: 0.25rem;
+}
+
+.tooltip-arrow {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid #2c3e50;
+}
+
+/* Timeline Legend */
+.timeline-legend {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e9ecef;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: #6c757d;
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.legend-dot.consultation { background: #4A90E2; }
+.legend-dot.routine-checkup { background: #50C878; }
+.legend-dot.pre-surgical { background: #FF6B6B; }
+.legend-dot.post-surgical { background: #FFB347; }
+.legend-dot.annual-review { background: #9B59B6; }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .timeline-container {
+    padding: 1rem;
+  }
+  
+  .timeline-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .patient-info {
+    align-items: flex-start;
+  }
+  
+  .timeline-items {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .timeline-item {
+    min-width: 100px;
+  }
+  
+  .timeline-legend {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .timeline-tooltip {
+    min-width: 250px;
+    left: 0;
+    transform: none;
+    margin-left: -50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline-tooltip {
+    position: fixed;
+    top: 50%;
+    left: 1rem;
+    right: 1rem;
+    transform: translateY(-50%);
+    margin: 0;
+    max-width: none;
+  }
+  
+  .tooltip-arrow {
+    display: none;
+  }
+}

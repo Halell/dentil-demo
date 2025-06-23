@@ -95,7 +95,7 @@ Tooth areas are stored as JSON objects with the following structure:
 
 ## Customization
 
-- Replace `public/images/x-ray-panoramic.jpg` with your own X-ray image
+- Replace `public/visual-data/panoramic/x-ray-panoramic.jpg` with your own X-ray image
 - Modify tooth area styling in the CSS files
 - Extend tooth metadata structure in the components
 - Add export/import functionality for sharing tooth definitions

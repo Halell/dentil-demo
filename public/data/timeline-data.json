@@ -1,0 +1,53 @@
+{
+  "timeline": [
+    {
+      "id": "2010-04-15",
+      "date": "2010-04-15T10:30:00Z",
+      "title": "Initial Assessment",
+      "description": "First panoramic X-ray examination",
+      "imageUrl": "/visual-data/panoramic/2010-04-15.jpg",
+      "dataTypes": ["xray", "notes"],
+      "treatmentType": "consultation",
+      "dentist": "Dr. Smith",
+      "notes": "Baseline panoramic assessment"
+    },
+    {
+      "id": "2012-07-02",
+      "date": "2012-07-02T14:15:00Z",
+      "title": "2-Year Follow-up",
+      "description": "Routine check-up with updated X-ray",
+      "imageUrl": "/visual-data/panoramic/2012-07-02.jpg",
+      "dataTypes": ["xray", "notes", "treatment-plan"],
+      "treatmentType": "routine",
+      "dentist": "Dr. Smith", 
+      "notes": "Routine follow-up, good oral health maintenance"
+    },
+    {
+      "id": "2015-08-06",
+      "date": "2015-08-06T09:45:00Z",
+      "title": "Mid-term Assessment",
+      "description": "Comprehensive examination and X-ray update",
+      "imageUrl": "/visual-data/panoramic/2015-08-06.jpg",
+      "dataTypes": ["xray", "notes", "treatment-plan"],
+      "treatmentType": "comprehensive",
+      "dentist": "Dr. Johnson",
+      "notes": "Comprehensive assessment, minor preventive care recommended"
+    },
+    {
+      "id": "2023-07-03",
+      "date": "2023-07-03T16:20:00Z",
+      "title": "Recent Examination",
+      "description": "Latest panoramic X-ray with detailed analysis",
+      "imageUrl": "/visual-data/panoramic/2023-07-03.jpg",
+      "dataTypes": ["xray", "notes", "treatment-plan", "analysis"],
+      "treatmentType": "comprehensive",
+      "dentist": "Dr. Johnson",
+      "notes": "Latest comprehensive examination with detailed tooth mapping"    }
+  ],
+  "currentTimelineId": "2023-07-03",
+  "patientInfo": {
+    "name": "Patient Demo",
+    "id": "P001",
+    "dateOfBirth": "1990-05-15"
+  }
+}

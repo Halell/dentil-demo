@@ -1,8 +1,11 @@
 import { useState, useRef, useEffect } from 'react';
-import { useToothData } from '../../hooks/useToothData';
+import { useImageToothData } from '../../hooks/useImageToothData';
+import { useTimelineData } from '../../hooks/useTimelineData';
+import { useCurrentImage } from '../../hooks/useCurrentImage';
 import { exportToothData, createToothArea, isUpperTooth } from '../../utils/toothUtils';
 import { APP_CONFIG } from '../../constants/app';
 
+import Timeline from './TimelineSimple';
 import XrayImage from './XrayImage';
 import SvgOverlay from './SvgOverlay';
 import ToothTooltip from './ToothTooltip';
@@ -10,22 +13,24 @@ import ContextMenu from '../common/ContextMenu';
 import ToothModal from '../common/ToothModal';
 import ToothInfoModal from '../common/ToothInfoModal';
 import LoadingSpinner from '../common/LoadingSpinner';
-import InfoPanel from '../common/InfoPanel';
 import EditControls from '../editor/EditControls';
 
 import '../../styles/components/viewer/XrayContainer.css';
 
 const XrayContainer = () => {
-  // Data management
-  const { toothAreas, isLoading, addToothArea, updateToothArea } = useToothData();
+  // Timeline management
+  const { 
+    timelineData, 
+    currentTimelineId, 
+    currentTimelineItem, 
+    isLoading: isTimelineLoading,
+    navigateToTimelineItem 
+  } = useTimelineData();
 
-  // Debug: Log tooth areas when they change
-  useEffect(() => {
-    console.log('🦷 Tooth areas updated:', toothAreas.length, 'teeth loaded');
-    if (toothAreas.length > 0) {
-      console.log('First tooth:', toothAreas[0]);
-    }
-  }, [toothAreas]);
+  // Current image management - load from patient data
+  const { currentImage, isLoading: isImageLoading } = useCurrentImage(currentTimelineId);
+  // Data management - load tooth areas from current image regions
+  const { toothAreas, isLoading: isToothLoading, addToothArea, updateToothArea } = useImageToothData(currentImage);
 
   // UI state
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -223,22 +228,30 @@ const XrayContainer = () => {
     setHoveredPointIndex(null);
     console.log('Deleted point from tooth:', toothId, 'at index:', pointIndex);
   };
-
   // Handle point hover for deletion
   const handlePointHover = (index) => {
     setHoveredPointIndex(index);
   };
-  if (isLoading) {
-    return <LoadingSpinner message="Loading tooth data..." />;
-  } return (
+  // Handle timeline navigation
+  const handleTimelineChange = (timelineItem) => {
+    navigateToTimelineItem(timelineItem);
+  };  if (isToothLoading || isTimelineLoading || isImageLoading) {
+    return <LoadingSpinner message="Loading dental data..." />;
+  }return (
     <div
       className="xray-container"
       onClick={handleClickOutside}
       onContextMenu={handleImageRightClick}
-    >
-      <div className="xray-image-container">
+    >      {/* Timeline Component */}
+      <Timeline
+        timelineData={timelineData}
+        currentTimelineId={currentTimelineId}
+        onTimelineChange={handleTimelineChange}
+      />
+        <div className="xray-image-container">
         <XrayImage
           ref={imageRef}
+          imagePath={currentImage?.path}
           onLoad={handleImageLoad}
           onRightClick={handleImageRightClick}
           onClick={handleImageClick}
@@ -291,13 +304,6 @@ const XrayContainer = () => {
         tooth={selectedTooth}
         position={modalPosition}
         onClose={closeToothInfoModal}
-      />
-
-      <InfoPanel
-        toothCount={toothAreas.length}
-        isEditingTooth={isEditingTooth}
-        editingToothId={editingToothId}
-        hoveredPointIndex={hoveredPointIndex}
       />
     </div>
   );
