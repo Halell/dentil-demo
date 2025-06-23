@@ -1,0 +1,35 @@
+.svg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.svg-overlay polygon,
+.svg-overlay path,
+.svg-overlay circle,
+.svg-overlay polyline {
+  pointer-events: all;
+}
+
+.editing-polygon {
+  fill: rgba(0, 122, 204, 0.2);
+  stroke: #007acc;
+  stroke-width: 2;
+  cursor: pointer;
+}
+
+.editing-point {
+  fill: #007acc;
+  stroke: white;
+  stroke-width: 1;
+  cursor: pointer;
+}
+
+.editing-line {
+  fill: none;
+  stroke: #007acc;
+  stroke-width: 2;
+  stroke-dasharray: 5, 5;
+}

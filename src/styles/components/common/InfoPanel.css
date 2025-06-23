@@ -1,0 +1,23 @@
+.info-panel {
+  margin-top: 15px;
+  padding: 12px;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  border-left: 4px solid #007acc;
+  transition: all 0.3s ease;
+}
+
+.info-panel.editing-mode {
+  background-color: #fff3cd;
+  border-left-color: #ffc107;
+}
+
+.info-panel p {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.info-panel p:last-child {
+  margin-bottom: 0;
+}

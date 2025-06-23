@@ -1,0 +1,58 @@
+.tooth-polygon {
+  fill: transparent;
+  stroke: transparent;
+  stroke-width: 1;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  filter: none;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.tooth-polygon:hover,
+.tooth-polygon.hovered {
+  fill: rgba(255, 255, 255, 0.1);
+  stroke: rgba(255, 255, 255, 0.6);
+  stroke-width: 1;
+  stroke-dasharray: 2, 2;
+  filter: contrast(1.4) brightness(1.2);
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.tooth-polygon:active {
+  fill: rgba(255, 255, 255, 0.15);
+  stroke: rgba(255, 255, 255, 0.8);
+}
+
+.edit-point {
+  fill: #007acc;
+  stroke: white;
+  stroke-width: 2;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.edit-point:hover,
+.edit-point.hovered {
+  fill: #ff4444;
+  stroke: white;
+  stroke-width: 2;
+  r: 5;
+  transform-origin: center;
+  animation: pulse 0.5s ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}

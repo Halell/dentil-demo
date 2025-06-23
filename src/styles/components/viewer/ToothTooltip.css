@@ -1,0 +1,41 @@
+.tooth-tooltip {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  pointer-events: none;
+  z-index: 1000;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+
+.tooth-tooltip.upper {
+  transform: translateX(-50%) translateY(-100%);
+  margin-top: -8px;
+}
+
+.tooth-tooltip.lower {
+  transform: translateX(-50%) translateY(10px);
+  margin-top: 8px;
+}
+
+.tooltip-arrow {
+  position: absolute;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: 5px solid transparent;
+  transform: translateX(-50%);
+}
+
+.tooth-tooltip.upper .tooltip-arrow {
+  bottom: -10px;
+  border-top-color: rgba(0, 0, 0, 0.8);
+}
+
+.tooth-tooltip.lower .tooltip-arrow {
+  top: -10px;
+  border-bottom-color: rgba(0, 0, 0, 0.8);
+}

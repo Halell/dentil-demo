@@ -1,0 +1,20 @@
+{
+    "dataConfig": {
+        "sources": [
+            {
+                "name": "S3 Bucket",
+                "url": "https://your-bucket.s3.amazonaws.com/tooth-areas.json",
+                "description": "External S3 bucket for tooth data",
+                "enabled": true
+            },
+            {
+                "name": "Local File",
+                "url": "/data/tooth-areas.json",
+                "description": "Local fallback",
+                "enabled": true
+            }
+        ],
+        "fallbackToLocalStorage": true,
+        "corsMode": "cors"
+    }
+}

@@ -1,0 +1,103 @@
+/* Medical X-ray Application Theme Variables */
+:root {
+  /* Color Palette - Medical/Clinical Theme */
+  --color-bg-primary: #f8f9fa;
+  --color-bg-secondary: #ffffff;
+  --color-bg-tertiary: #f0f2f5;
+  
+  /* X-ray Specific Colors */
+  --color-xray-bg: #1a1a1a;
+  --color-xray-contrast: #ffffff;
+  --color-tooth-default: transparent;
+  --color-tooth-hover: rgba(255, 255, 255, 0.6);
+  --color-tooth-fill-hover: rgba(255, 255, 255, 0.1);
+  --color-tooth-active: rgba(255, 255, 255, 0.8);
+  
+  /* UI Elements */
+  --color-text-primary: #213547;
+  --color-text-secondary: #2c3e50;
+  --color-text-muted: #5a6c7d;
+  --color-border: #e9ecef;
+  --color-shadow: rgba(0, 0, 0, 0.1);
+  
+  /* Interactive Elements */
+  --color-accent: #007acc;
+  --color-accent-hover: #005a9e;
+  --color-edit-point: #007acc;
+  --color-edit-point-hover: #ff4444;
+  --color-warning: #ffd700;
+  --color-success: #28a745;
+  --color-danger: #dc3545;
+  
+  /* Modal & Overlay */
+  --color-modal-backdrop: rgba(255, 255, 255, 0.1);
+  --color-tooltip-bg: rgba(0, 0, 0, 0.8);
+  --color-overlay-bg: rgba(0, 0, 0, 0.5);
+  
+  /* Typography */
+  --font-family-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* Font Sizes */
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-base: 1rem;     /* 16px */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.25rem;    /* 20px */
+  --font-size-2xl: 1.5rem;    /* 24px */
+  --font-size-3xl: 2rem;      /* 32px */
+  
+  /* Spacing Scale */
+  --spacing-0: 0;
+  --spacing-1: 0.25rem;       /* 4px */
+  --spacing-2: 0.5rem;        /* 8px */
+  --spacing-3: 0.75rem;       /* 12px */
+  --spacing-4: 1rem;          /* 16px */
+  --spacing-5: 1.25rem;       /* 20px */
+  --spacing-6: 1.5rem;        /* 24px */
+  --spacing-8: 2rem;          /* 32px */
+  --spacing-10: 2.5rem;       /* 40px */
+  --spacing-12: 3rem;         /* 48px */
+  
+  /* Border Radius */
+  --radius-none: 0;
+  --radius-sm: 0.25rem;       /* 4px */
+  --radius-base: 0.5rem;      /* 8px */
+  --radius-md: 0.75rem;       /* 12px */
+  --radius-lg: 1rem;          /* 16px */
+  --radius-full: 9999px;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px var(--color-shadow);
+  --shadow-base: 0 2px 4px var(--color-shadow);
+  --shadow-md: 0 4px 8px var(--color-shadow);
+  --shadow-lg: 0 8px 16px var(--color-shadow);
+  --shadow-xl: 0 16px 32px var(--color-shadow);
+  
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 200ms ease;
+  --transition-slow: 300ms ease;
+  
+  /* Z-index Scale */
+  --z-dropdown: 100;
+  --z-overlay: 200;
+  --z-modal: 300;
+  --z-tooltip: 400;
+  --z-toast: 500;
+}
+
+/* Dark theme support (future) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg-primary: #1e1e1e;
+    --color-bg-secondary: #2d2d2d;
+    --color-bg-tertiary: #3d3d3d;
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #f0f0f0;
+    --color-text-muted: #cccccc;
+  }
+}
