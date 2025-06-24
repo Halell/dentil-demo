@@ -48,17 +48,11 @@ const ToothPolygon = ({
       }));
     } else {
       pixelPoints = points;
-    }
-
-    // Create curved path with rounded corners
+    }    // Create curved path with rounded corners
     const curvedPath = createRoundedPolygonPath(pixelPoints, 8); // 8px corner radius
 
-    // Debug: Log path creation
-    console.log('Curved path created for tooth', tooth.id, ':', curvedPath ? 'SUCCESS' : 'FAILED');    // Create points strings for original (for editing)
+    // Create points strings for original (for editing)
     const pointsString = pixelPoints.map(point => `${point.x.toFixed(1)},${point.y.toFixed(1)}`).join(' ');
-
-    // Debug: Log tooth rendering
-    console.log('Tooth', tooth.id, 'rendering with', pixelPoints.length, 'points:', pointsString.substring(0, 50) + '...');
 
     return {
       points: pointsString,

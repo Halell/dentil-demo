@@ -1,36 +1,31 @@
 import { useState, useRef, useEffect } from 'react';
 import { useImageToothData } from '../../hooks/useImageToothData';
 import { useTimelineData } from '../../hooks/useTimelineData';
-import { useCurrentImage } from '../../hooks/useCurrentImage';
 import { exportToothData, createToothArea, isUpperTooth } from '../../utils/toothUtils';
 import { APP_CONFIG } from '../../constants/app';
 
 import Timeline from './TimelineSimple';
-import XrayImage from './XrayImage';
+import LayeredXrayImage from './LayeredXrayImage';
 import SvgOverlay from './SvgOverlay';
 import ToothTooltip from './ToothTooltip';
 import ContextMenu from '../common/ContextMenu';
 import ToothModal from '../common/ToothModal';
 import ToothInfoModal from '../common/ToothInfoModal';
-import LoadingSpinner from '../common/LoadingSpinner';
 import EditControls from '../editor/EditControls';
 
 import '../../styles/components/viewer/XrayContainer.css';
 
-const XrayContainer = () => {
-  // Timeline management
-  const { 
-    timelineData, 
-    currentTimelineId, 
-    currentTimelineItem, 
+const XrayContainer = () => {  // Timeline management
+  const {
+    timelineData,
+    currentTimelineId,
+    currentTimelineItem,
     isLoading: isTimelineLoading,
-    navigateToTimelineItem 
+    navigateToTimelineItem
   } = useTimelineData();
 
-  // Current image management - load from patient data
-  const { currentImage, isLoading: isImageLoading } = useCurrentImage(currentTimelineId);
-  // Data management - load tooth areas from current image regions
-  const { toothAreas, isLoading: isToothLoading, addToothArea, updateToothArea } = useImageToothData(currentImage);
+  // Data management - load tooth areas from timeline data
+  const { toothAreas, isLoading: isToothLoading, addToothArea, updateToothArea } = useImageToothData(currentTimelineId);
 
   // UI state
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -231,13 +226,13 @@ const XrayContainer = () => {
   // Handle point hover for deletion
   const handlePointHover = (index) => {
     setHoveredPointIndex(index);
-  };
-  // Handle timeline navigation
+  };  // Handle timeline navigation
   const handleTimelineChange = (timelineItem) => {
     navigateToTimelineItem(timelineItem);
-  };  if (isToothLoading || isTimelineLoading || isImageLoading) {
-    return <LoadingSpinner message="Loading dental data..." />;
-  }return (
+  };
+
+  // Show content immediately without loading states
+  return (
     <div
       className="xray-container"
       onClick={handleClickOutside}
@@ -247,11 +242,10 @@ const XrayContainer = () => {
         timelineData={timelineData}
         currentTimelineId={currentTimelineId}
         onTimelineChange={handleTimelineChange}
-      />
-        <div className="xray-image-container">
-        <XrayImage
+      />      <div className="xray-image-container">        <LayeredXrayImage
           ref={imageRef}
-          imagePath={currentImage?.path}
+          timelineData={timelineData}
+          currentTimelineId={currentTimelineId}
           onLoad={handleImageLoad}
           onRightClick={handleImageRightClick}
           onClick={handleImageClick}

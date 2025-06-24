@@ -1,0 +1,78 @@
+/* Container maintains size based on first image */
+.layered-xray-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  cursor: crosshair;
+  user-select: none;
+  background: #1a1a1a;
+  overflow: hidden;
+}
+
+/* All images stacked absolutely */
+.layered-xray-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  user-select: none;
+  
+  /* GPU acceleration for smooth switching */
+  transform: translateZ(0);
+  will-change: opacity, visibility;
+  
+  /* Perfect image rendering */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  
+  /* No transitions for instant switching */
+  transition: none;
+}
+
+/* First image defines container size */
+.layered-xray-image:first-child {
+  position: relative;
+}
+
+/* All other images are absolutely positioned */
+.layered-xray-image:not(:first-child) {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Active image - visible and on top */
+.layered-xray-image.active {
+  opacity: 1 !important;
+  z-index: 10 !important;
+  visibility: visible !important;
+}
+
+/* Inactive images - completely hidden */
+.layered-xray-image.inactive {
+  opacity: 0 !important;
+  z-index: 1 !important;
+  visibility: hidden !important;
+  pointer-events: none;
+}
+
+/* No images state */
+.no-images {
+  color: #ccc;
+  font-size: 16px;
+  text-align: center;
+  padding: 40px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .layered-xray-container {
+    max-width: 100vw;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .layered-xray-image {
+    image-rendering: -webkit-optimize-contrast;
+  }
+}
